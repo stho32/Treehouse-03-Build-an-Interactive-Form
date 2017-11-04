@@ -2,7 +2,7 @@
 
 ## Meets expectations 
 
-  1. [ ] (R1) On page load, the cursor appears in the "Name" field, ready for a user to type.
+  1. [x] (R1) On page load, the cursor appears in the "Name" field, ready for a user to type.
 
   2. [ ] (R2) "Your job role" text field appears when user selects "Other" from the Job Role menu
 
