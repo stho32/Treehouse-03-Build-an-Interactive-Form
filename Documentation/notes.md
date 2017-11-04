@@ -16,7 +16,10 @@ Since the main.js is loaded at the end of the form file I do not need to use $(d
 I do not want to pollute the global namespace, so I nicely encapsulate everything in an IIFE. 
 This also gives me a nice position to "use strict".
 
-
+# (R3)
+Well well. Actually the pattern is quite similar to the first interaction.
+I added data- Attributes to the options so that they know to which shirt they belong.
+That can be used for filtering. 
 
 
 ... I should update R1 to use const references to DOM components. 
