@@ -4,7 +4,7 @@
 
   - [ ] On page load, the cursor appears in the "Name" field, ready for a user to type.
 
-  - [ ]"Your job role" text field appears when user selects "Other" from the Job Role menu
+  - [ ] "Your job role" text field appears when user selects "Other" from the Job Role menu
 
   - [ ] No color options appear in the “Color” menu until the user chooses a T-Shirt theme. The “Color” menu reads “Please select a T-shirt theme” until a theme is selected from the “Design” menu.
 
