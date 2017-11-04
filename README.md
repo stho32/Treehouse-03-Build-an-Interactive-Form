@@ -6,8 +6,8 @@ See [requirements](Documentation/requirements.md) for the instructions.
 
 You might also be interested in my [notes](Documentation/notes.md) where I share my thoughts about why I chose one way of solution over another. 
 
-(Coming up)
-Links to github-Pages of this repo, so you can easily see the results.
+I've used github-Pages to make the result clickable for you. 
+Click [here](https://stho32.github.io/treehouse-Build-an-Interactive-Form/Source/index.html) to go to the result page.
 
 In a nutshell, this project is about a form that is extended by unobtrusive javascript
 to provide client side validation and a little interaction. 
