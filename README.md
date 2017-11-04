@@ -15,6 +15,7 @@ With deactivated Javascript the form shall still be able to provide all the func
 well at least it should be usable.
 
 
+I try to become better at measuring and guessing time. For an insight into what I did and how long it took you may have fun looking at my [pomodoro-log](Documentation/pomodoro.md).
 
 
 
