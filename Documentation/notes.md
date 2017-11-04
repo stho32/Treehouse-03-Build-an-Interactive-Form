@@ -16,3 +16,8 @@ Since the main.js is loaded at the end of the form file I do not need to use $(d
 I do not want to pollute the global namespace, so I nicely encapsulate everything in an IIFE. 
 This also gives me a nice position to "use strict".
 
+
+
+
+... I should update R1 to use const references to DOM components. 
+Its just a bit more beautiful :).
