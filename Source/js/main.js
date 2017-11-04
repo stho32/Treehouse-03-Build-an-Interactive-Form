@@ -26,7 +26,8 @@
         ShowOrHideYourJobRoleDependingOnSelection();
 
         // Everytime the selection of the job role changes we need to 
-        // reevaluate if the job role makes sense.
+        // reevaluate if the visiblilty ot he job role text field makes sense.
+        $("#title").on("change", ShowOrHideYourJobRoleDependingOnSelection);
     }
 
 
