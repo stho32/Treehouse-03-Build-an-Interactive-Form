@@ -30,7 +30,7 @@
 
         // Add a placeholder option
         const $placeholderOption = $('<option>Please select a T-shirt theme</option>');
-        $colorSelect.prepend(placeholder);
+        $colorSelect.prepend($placeholderOption);
 
         function MakeColorsVisibleByDesign(design) {
             let options = $colorSelect.children();
