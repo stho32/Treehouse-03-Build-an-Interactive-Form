@@ -7,3 +7,4 @@ Each point is a pomodoro of work.
   1. Added jquery + main.js. Started working on (R2).
   1. Finished (R2), started working on (R3). 
   1. Taking up the work from yesterday. Reviewing requirements video to get additional information about the interaction that treehouse would like to have. E.g. what needs to be in the html and what is dynamically added via javascript.
+  1. Updated and simplified R2. Reread and reviewed R3. Started to rework R3.
