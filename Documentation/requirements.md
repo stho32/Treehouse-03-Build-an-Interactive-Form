@@ -6,9 +6,9 @@
 
   2. [x] (R2) "Your job role" text field appears when user selects "Other" from the Job Role menu
 
-  3. [ ] (R3) No color options appear in the “Color” menu until the user chooses a T-Shirt theme. The “Color” menu reads “Please select a T-shirt theme” until a theme is selected from the “Design” menu.
+  3. [x] (R3) No color options appear in the “Color” menu until the user chooses a T-Shirt theme. The “Color” menu reads “Please select a T-shirt theme” until a theme is selected from the “Design” menu.
 
-  4. [ ] (R4) T-shirt color options are revealed based on the design selected.
+  4. [x] (R4) T-shirt color options are revealed based on the design selected.
 
   5. [ ] (R5) User cannot select two activities that are at the same time.
 
