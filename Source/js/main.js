@@ -54,7 +54,7 @@
     }
 
     // implementation of requirement (R5) "Activities and timeslots"
-    function EnableActivitySelection() {
+    function EnableActivitySelectionAndTimeslots() {
         const $activityFieldset = $(".activities");
         const $activityCheckboxes = $('.activities input[type="checkbox"]');
 
@@ -99,7 +99,8 @@
         DisableActivitiesOnTimeslotsThatAreNotChecked();
     }
 
+
     EnableJobRoleInteraction();
     EnableTShirtDesignsAndColorsInteraction();
-    EnableActivitySelection();
+    EnableActivitySelectionAndTimeslots();
 })();
