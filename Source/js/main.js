@@ -27,37 +27,33 @@
     function EnableTShirtDesignsAndColorsInteraction() {
         const $designSelect = $("#design");
         const $colorSelect  = $("#color");
-        
+
+        // Add a placeholder option
+        const $placeholderOption = $('<option>Please select a T-shirt theme</option>');
+        $colorSelect.prepend(placeholder);
+
         function MakeColorsVisibleByDesign(design) {
             let options = $colorSelect.children();
 
             for (let i = 0; i < options.length; i++ ) {
-                let option = $(options[i]);
+                let $option = $(options[i]);
 
-                // we show the placeholder only when no theme is selected
-                if ( design === "" && option.data("belongstoshirt") === undefined ) {
-                    option.show();
-                    continue;
-                }
-
-                if ( option.data("belongstoshirt") === design ) 
-                {
-                    option.show();
-                }
-                else
-                {
-                    option.hide();
-                }
+                $option.toggle($option.data("belongstoshirt") === design);
             }
 
-            $colorSelect.val("");
-        }
+            $placeholderOption.toggle(design === "Select Theme");
 
-        MakeColorsVisibleByDesign(undefined);
+            /* We always select the first visible option when the theme is changed.
+               As far as we know there should always be at least one.
+             */
+            $colorSelect.val($colorSelect.find("option:visible")[0].value);
+        }
 
         $designSelect.on("change", () => {
             MakeColorsVisibleByDesign($designSelect.val());
         });
+
+        MakeColorsVisibleByDesign($designSelect.val());
     }
 
     EnableJobRoleInteraction();
