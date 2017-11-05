@@ -12,7 +12,7 @@
 
   5. [x] (R5) User cannot select two activities that are at the same time.
 
-  6. [ ] (R6) Total cost of selected activities is calculated and displayed below the list of activities
+  6. [x] (R6) Total cost of selected activities is calculated and displayed below the list of activities
 
   7. [ ] (R7) When a user chooses a payment option, the chosen payment section is revealed and the other payment sections are hidden
 
