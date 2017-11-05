@@ -137,8 +137,14 @@
         UpdateTotalCost();
     }
 
+    // implementation of requirement (R7) "Show and hide payment sections"
+    function EnablePaymentSectionDisplay() {
+
+    }
+
     EnableJobRoleInteraction();
     EnableTShirtDesignsAndColorsInteraction();
     EnableActivitySelectionAndTimeslots();
     EnableActivityCostCalculation();
+    EnablePaymentSectionDisplay();
 })();

@@ -12,3 +12,4 @@ Each point is a pomodoro of work.
   1. Working on R5.
   1. R5 is working now but we still need some graphical glue.
   1. R5 is complete. R6 is in the workings. At the moment Css. 
+  1. R6 is complete. R7 started... 
