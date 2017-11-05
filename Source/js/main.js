@@ -19,7 +19,7 @@
         ShowOrHideYourJobRoleDependingOnSelection();
     }
 
-    // implementation of requirement (R3)
+    // implementation of requirement (R3+R4)
     function EnableTShirtDesignsAndColorsInteraction() {
         const $designSelect = $("#design");
         const $colorSelect  = $("#color");
@@ -49,6 +49,8 @@
         $designSelect.on("change", () => { MakeColorsVisibleByDesign($designSelect.val()); });
         MakeColorsVisibleByDesign($designSelect.val());
     }
+
+
 
     EnableJobRoleInteraction();
     EnableTShirtDesignsAndColorsInteraction();
