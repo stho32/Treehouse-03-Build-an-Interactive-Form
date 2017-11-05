@@ -7,18 +7,11 @@
 
     // implementation of requirement (R2)
     function EnableJobRoleInteraction() {
-        function SetYourJobRoleVisibility(showIt) {
-            if (showIt) {
-                $("label[for='your-job-role']").show();
-                $("#your-job-role").show();
-                return;
-            }
-            $("label[for='your-job-role']").hide();
-            $("#your-job-role").hide();
-        }
+        const $yourJobRoleInput = $("#your-job-role");
+        const $jobTitleSelect = $("#title");
 
         function ShowOrHideYourJobRoleDependingOnSelection() {
-            SetYourJobRoleVisibility($("#title").val() === "other")
+            $yourJobRoleInput.toggle($jobTitleSelect.val() === "other");
         }
 
         // I do "not really know" the default value of the drop down
@@ -27,7 +20,7 @@
 
         // Everytime the selection of the job role changes we need to 
         // reevaluate if the visiblilty ot he job role text field makes sense.
-        $("#title").on("change", ShowOrHideYourJobRoleDependingOnSelection);
+        $jobTitleSelect.on("change", ShowOrHideYourJobRoleDependingOnSelection);
     }
 
     // implementation of requirement (R3)
