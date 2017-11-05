@@ -101,7 +101,40 @@
 
     // implementation of requirement (R6) "Activities and their costs"
     function EnableActivityCostCalculation() {
-        
+        const $activityFieldset = $(".activities");
+        const $activityCheckboxes = $('.activities input[type="checkbox"]');
+
+        // total cost html "control"
+        const $totalCostControl = $(`
+        <div class="totalCost">
+            <span class="totalCost__label">Total:</span>
+            <span class="totalCost__cost">$0</span>
+        </div>
+        `);
+        $activityFieldset.append($totalCostControl);
+
+        function TotalCost() {
+            let result = 0;
+
+            for (let i = 0; i < $activityCheckboxes.length; i++ ) {
+                let $checkbox = $($activityCheckboxes[i]);
+                let checkboxIsChecked = $checkbox.prop("checked");
+                let cost = parseInt($checkbox.data("cost"), 10);
+                
+                if ( checkboxIsChecked ) {
+                    result += cost;
+                }
+            }
+
+            return result;
+        }
+
+        function UpdateTotalCost() {
+            $totalCostControl.find(".totalCost__cost").text("$" + TotalCost().toString());
+        }
+
+        $activityFieldset.on("click", UpdateTotalCost);
+        UpdateTotalCost();
     }
 
     EnableJobRoleInteraction();
