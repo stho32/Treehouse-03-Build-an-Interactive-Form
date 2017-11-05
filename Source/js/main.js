@@ -99,8 +99,13 @@
         DisableActivitiesOnTimeslotsThatAreNotChecked();
     }
 
+    // implementation of requirement (R6) "Activities and their costs"
+    function EnableActivityCostCalculation() {
+        
+    }
 
     EnableJobRoleInteraction();
     EnableTShirtDesignsAndColorsInteraction();
     EnableActivitySelectionAndTimeslots();
+    EnableActivityCostCalculation();
 })();
