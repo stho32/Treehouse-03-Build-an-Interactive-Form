@@ -53,7 +53,7 @@
         MakeColorsVisibleByDesign($designSelect.val());
     }
 
-    // implementation of requirement (R5) "Activities"
+    // implementation of requirement (R5) "Activities and timeslots"
     function EnableActivitySelection() {
         const $activityFieldset = $(".activities");
         const $activityCheckboxes = $('.activities input[type="checkbox"]');
