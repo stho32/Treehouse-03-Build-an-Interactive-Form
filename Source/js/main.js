@@ -1,29 +1,14 @@
 /**
  * The form's javascript file.
  * 
- * The first part implements some simple tool functions.
  * The rest is the interaction for the form. 
  */
 
 
-const Tools = {};
-
-/**
- * toggleProperty toggles that property depending on the booleanValue
- * that you pass. 
- * 
- * e.g. Tools.toggleProperty($checkbox, "disabled", ...) sets or unsets
- * disabled on that checkbox depending on if the last value is true or 
- * false.
- */
-Tools.toggleProperty = ($element, propertyName, booleanValue) => {
-    $element.prop(propertyName, booleanValue);
-};
-
 (function() {
     "use strict";
 
-    // implementation of requirement (R2)
+    // implementation of requirement (R2) "Job Role Other"
     function EnableJobRoleInteraction() {
         const $yourJobRoleInput = $("#your-job-role");
         const $jobTitleSelect = $("#title");
@@ -37,7 +22,7 @@ Tools.toggleProperty = ($element, propertyName, booleanValue) => {
         ShowOrHideYourJobRoleDependingOnSelection();
     }
 
-    // implementation of requirement (R3+R4)
+    // implementation of requirement (R3+R4) "Dropboxes and placeholders"
     function EnableTShirtDesignsAndColorsInteraction() {
         const $designSelect = $("#design");
         const $colorSelect  = $("#color");
@@ -68,7 +53,7 @@ Tools.toggleProperty = ($element, propertyName, booleanValue) => {
         MakeColorsVisibleByDesign($designSelect.val());
     }
 
-    // implementation of requirement (R5)
+    // implementation of requirement (R5) "Activities"
     function EnableActivitySelection() {
         const $activityFieldset = $(".activities");
         const $activityCheckboxes = $('.activities input[type="checkbox"]');
@@ -98,12 +83,15 @@ Tools.toggleProperty = ($element, propertyName, booleanValue) => {
 
             for (let i = 0; i < $activityCheckboxes.length; i++ ) {
                 let $checkbox = $($activityCheckboxes[i]);
+                let $label    = $checkbox.closest("label");
+
                 let checkboxIsChecked = $checkbox.prop("checked");
                 let timeslot = $checkbox.data("timeslot");
                 
-                Tools.toggleProperty(
-                    $checkbox, "disabled", 
-                    usedTimeslots.indexOf(timeslot) > -1 && !checkboxIsChecked);
+                let shouldBeDisabled = usedTimeslots.indexOf(timeslot) > -1 && !checkboxIsChecked;
+
+                $checkbox.prop("disabled", shouldBeDisabled);
+                $label.toggleClass("label--inactive", shouldBeDisabled);
             }
         }
 

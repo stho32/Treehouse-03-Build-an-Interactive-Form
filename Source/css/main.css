@@ -1,0 +1,10 @@
+/**
+ * Additional css to make the form more beautiful. 
+ * 
+ */
+
+/* For R5 we want the label to show more clearly 
+   the deactivated state of its checkbox */
+.activities .label--inactive {
+    color: grey;
+}

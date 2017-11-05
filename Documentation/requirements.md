@@ -10,7 +10,7 @@
 
   4. [x] (R4) T-shirt color options are revealed based on the design selected.
 
-  5. [ ] (R5) User cannot select two activities that are at the same time.
+  5. [x] (R5) User cannot select two activities that are at the same time.
 
   6. [ ] (R6) Total cost of selected activities is calculated and displayed below the list of activities
 
