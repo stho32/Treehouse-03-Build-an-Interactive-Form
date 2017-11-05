@@ -1,5 +1,5 @@
 /**
- * The forms javascript file. 
+ * The form's javascript file. 
  */
 
 (function() {
@@ -14,13 +14,9 @@
             $yourJobRoleInput.toggle($jobTitleSelect.val() === "other");
         }
 
-        // I do "not really know" the default value of the drop down
-        // so I just init everything by evaluation the visibility rule.
-        ShowOrHideYourJobRoleDependingOnSelection();
-
-        // Everytime the selection of the job role changes we need to 
-        // reevaluate if the visiblilty ot he job role text field makes sense.
+        // Connect & Initialize interaction
         $jobTitleSelect.on("change", ShowOrHideYourJobRoleDependingOnSelection);
+        ShowOrHideYourJobRoleDependingOnSelection();
     }
 
     // implementation of requirement (R3)
@@ -49,10 +45,8 @@
             $colorSelect.val($colorSelect.find("option:visible")[0].value);
         }
 
-        $designSelect.on("change", () => {
-            MakeColorsVisibleByDesign($designSelect.val());
-        });
-
+        // Connect & initialize interaction
+        $designSelect.on("change", () => { MakeColorsVisibleByDesign($designSelect.val()); });
         MakeColorsVisibleByDesign($designSelect.val());
     }
 
