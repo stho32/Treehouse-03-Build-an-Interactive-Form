@@ -21,6 +21,17 @@ Well well. Actually the pattern is quite similar to the first interaction.
 I added data- Attributes to the options so that they know to which shirt they belong.
 That can be used for filtering. 
 
+R3 is clearly a description of a javascript interaction, isn't it. So I think the placeholder should not be 
+there. To set me up for the right decision, I reviewed the requirement video that shows the interaction that
+"the customer" wishes for. 
+
+Updating index.html...
+  - "Your job role" is not a labeled field but a text field with a placeholder
+  - The drop down with the colors does not contain the "placeholder" in a hardcoded fashion.
+
+
+
+
 
 ... I should update R1 to use const references to DOM components. 
 Its just a bit more beautiful :).

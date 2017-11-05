@@ -6,3 +6,4 @@ Each point is a pomodoro of work.
   1. Added the files that have been provided by team treehouse. Solved (R1). Checked (R1). Updated the repository at github to use github pages. Updated readme.md to reference the index.html to be more convenient for reviewers.
   1. Added jquery + main.js. Started working on (R2).
   1. Finished (R2), started working on (R3). 
+  1. Taking up the work from yesterday. Reviewing requirements video to get additional information about the interaction that treehouse would like to have. E.g. what needs to be in the html and what is dynamically added via javascript.

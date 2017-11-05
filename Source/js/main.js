@@ -41,7 +41,14 @@
             for (let i = 0; i < options.length; i++ ) {
                 let option = $(options[i]);
 
-                if ( option.data("belongstoshirt") === design ) {
+                // we show the placeholder only when no theme is selected
+                if ( design === "" && option.data("belongstoshirt") === undefined ) {
+                    option.show();
+                    continue;
+                }
+
+                if ( option.data("belongstoshirt") === design ) 
+                {
                     option.show();
                 }
                 else
