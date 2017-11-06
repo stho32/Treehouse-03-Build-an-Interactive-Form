@@ -14,7 +14,7 @@
 
   6. [x] (R6) Total cost of selected activities is calculated and displayed below the list of activities
 
-  7. [ ] (R7) When a user chooses a payment option, the chosen payment section is revealed and the other payment sections are hidden
+  7. [x] (R7) When a user chooses a payment option, the chosen payment section is revealed and the other payment sections are hidden
 
   8. [ ] (R8) Form cannot be submitted (the page does not refresh when the submit button is clicked) until the following requirements have been met:
 
