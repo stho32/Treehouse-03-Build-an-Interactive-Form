@@ -139,7 +139,26 @@
 
     // implementation of requirement (R7) "Show and hide payment sections"
     function EnablePaymentSectionDisplay() {
+        const $paymentSelect = $("#payment");
+        const options = $paymentSelect.children();
 
+        function HideAll() {
+            for (let i = 0; i < options.length; i++) {
+                $("." + $(options[i]).data("connectedtocssclass")).hide();
+            }
+        }
+
+        function ShowSelectedPaymentSection() {
+            HideAll();
+
+            let selectedOption = $paymentSelect.find("option:selected");
+            let cssClass = "." + $(selectedOption).data("connectedtocssclass");
+
+            $(cssClass).show();
+        }
+
+        $paymentSelect.on("change", ShowSelectedPaymentSection);
+        ShowSelectedPaymentSection();
     }
 
     EnableJobRoleInteraction();
