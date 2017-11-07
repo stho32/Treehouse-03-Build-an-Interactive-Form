@@ -14,3 +14,4 @@ Each point is a pomodoro of work.
   1. R5 is complete. R6 is in the workings. At the moment Css. 
   1. R6 is complete. R7 started... 
   1. R7 is working now.
+  1. Started working on R8. Name field message is displayed.

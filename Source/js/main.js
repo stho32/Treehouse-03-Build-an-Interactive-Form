@@ -161,9 +161,63 @@
         ShowSelectedPaymentSection();
     }
 
+    // implementation of requirement (R8) "Form Validation"
+    function EnableFormValidation() {
+        const $form = $("form");
+        const rules = [];
+        const validationControls = [];
+
+        function AppendValidationControlFor(selector) {
+            const newControlInfo = { for: selector, name: '#validationControl_' + (validationControls.length+1).toString() };
+            
+            let $control = $('<div id="' + newControlInfo.name + '" class="validationControl"></div>');
+            $control.insertAfter($(selector));
+            newControlInfo.$control = $control;
+
+            validationControls.push(newControlInfo);
+        }
+
+        function ShowValidationMessage(forSelector, message) {
+            for (let i = 0; i < validationControls.length; i++) {
+                if ( validationControls[i].for === forSelector ) {
+                    validationControls[i].$control.text(message);
+                }
+            }
+        }
+
+        function IsFormValid() {
+            $(".validationControl").html("");
+            
+            let result = true;
+
+            for (let i = 0; i < rules.length; i++) {
+                let evaluatedRule = rules[i]();
+
+                if (evaluatedRule.for !== undefined) {
+                    ShowValidationMessage(evaluatedRule.for, evaluatedRule.message);
+                    result = false;
+                }
+            }
+
+            return result;
+        }
+
+        AppendValidationControlFor("#name");
+
+        // R8.1 Name field isn’t blank
+        rules.push(function() {
+            console.log("evaluating name rule...");
+            if ( $("#name").val() === "" ) { return { for: "#name", message: "The name field shoudn't be blank." } }
+            return {};
+        });
+
+        console.log(IsFormValid());
+    }
+
     EnableJobRoleInteraction();
     EnableTShirtDesignsAndColorsInteraction();
     EnableActivitySelectionAndTimeslots();
     EnableActivityCostCalculation();
     EnablePaymentSectionDisplay();
+    EnableFormValidation();
 })();
