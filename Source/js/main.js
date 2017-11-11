@@ -167,6 +167,11 @@
         const rules = [];
         const validationControls = [];
 
+        /* When used with javascript we modify the form to not do 
+           HTML 5 validation so we can meet the requirements. 
+           Still, when Js is disabled, why not use it? */
+        $form.attr("novalidate", "novalidate");
+
         function AppendValidationControlFor(selector) {
             const newControlInfo = { for: selector, name: '#validationControl_' + (validationControls.length+1).toString() };
             
@@ -203,10 +208,19 @@
         }
 
         AppendValidationControlFor("#name");
+        AppendValidationControlFor("#email");
 
         // R8.1 Name field isn’t blank
         rules.push(() => {
-            if ( $("#name").val() === "" ) { return { for: "#name", message: "The name field shoudn't be blank." } }
+            if ( $("#name").val() === "" ) { return { for: "#name", message: "The name field shoudn't be blank." }; }
+            return {};
+        });
+        // R8.2 Email-field isn't blank
+        rules.push(() => {
+            const emailRegEx = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
+            if ( !emailRegEx.test($("#email").val()) ) {
+                return { for: "#email", message: "The e-mail field does not contain a valid email address." };
+            }
             return {};
         });
 
