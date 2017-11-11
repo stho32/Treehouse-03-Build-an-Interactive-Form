@@ -20,7 +20,7 @@
 
     1. [x] (R8.1) Name field isn’t blank
     2. [*] (R8.2) Email field contains validly formatted e-mail address: (doesn’t have to check that it's a real e-mail address, just that it's formatted like one: dave@teamtreehouse.com, for example).
-    3. [ ] (R8.3) At least one checkbox under "Register for Activities" section must be selected.
+    3. [x] (R8.3) At least one checkbox under "Register for Activities" section must be selected.
     4. [ ] (R8.4) If "Credit Card" is the selected payment option, the three fields accept only numbers: a 13 to 16-digit credit card number, a 5-digit zip code, and 3-number CVV value
 
   9. [ ] (R9) On submission, the form provides an error indication or message for each field that requires validation: name field, email field, “Register for Activities” checkboxes, credit card number, zip code, and CVV
