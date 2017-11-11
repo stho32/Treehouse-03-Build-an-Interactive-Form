@@ -17,4 +17,6 @@ Each point is a pomodoro of work.
   1. Started working on R8. Name field message is displayed.
   1. Field "name" is checked now. I did a bit of css design on the validation controls and caught the form submit event to start the validation.
   1. Field "email" is checked now.
-  1. Working on activity checked checking. Somehow the selector doesn't work. *
+  1. Working on activity checked checking. Somehow the selector doesn't work. 
+  1. activity checking works, working on credit card validation
+  1. *

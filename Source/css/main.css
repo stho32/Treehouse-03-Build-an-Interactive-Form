@@ -46,3 +46,8 @@
     height: 0px;
     padding: 0px;
 }
+
+#cardnumber-zipcode-cvv-validation {
+    float:left;
+    width:100%;
+}

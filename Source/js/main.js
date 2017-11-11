@@ -195,9 +195,13 @@
         }
 
         function ShowValidationMessage(forSelector, message) {
+            // We convert our messages to HTML, encode them, 
+            // then we can savely replace line feeds with <br>'s.
+            let messageHtml = $('<div/>').text(message).html().replace(/\n/g, "<br/>");
+
             for (let i = 0; i < validationControls.length; i++) {
                 if ( validationControls[i].for === forSelector ) {
-                    validationControls[i].$control.text(message);
+                    validationControls[i].$control.html(messageHtml);
                 }
             }
         }
@@ -222,6 +226,8 @@
         AppendValidationControlFor("#name");
         AppendValidationControlFor("#email");
         RegisterValidationControlFor(".activities", "#registerActivitiesValidationControl");
+        // .credit-card-row1 is virtual, just an identifier
+        RegisterValidationControlFor(".credit-card-row1", "#cardnumber-zipcode-cvv-validation");
 
         // R8.1 Name field isn’t blank
         rules.push(() => {
@@ -239,9 +245,41 @@
         // R8.3 there should be an activity that is checked; at least one
         rules.push(() => {
             if ( $(".activities input:checked").length == 0 ) {
-                console.log("noting checked");
                 return { for: ".activities", message: "There should be at least one activity that is selected." };
             } 
+            return {};
+        });
+        // R8.4 If "Credit Card" is the selected payment option, the three fields accept only numbers: a 13 to 16-digit credit card number, a 5-digit zip code, and 3-number CVV value
+        rules.push(() => {
+            let message = ""; 
+
+            if ( $("#payment").val() !== "credit card" ) {
+                return {};
+            }
+
+            if ( $("#cc-num").val().length < 13 || 
+                 $("#cc-num").val().length > 16 ) {
+                message += "The credit card number should be between 13 and 16 numbers long.\n";
+            }
+
+            if ( $("#zip").val().length !== 5 ) {
+                message += "The zip code should be 5 digits long.\n";
+            }
+
+            if ( $("#cvv").val().length !== 3 ) {
+                message += "The cvv should be 3 digits long.\n";
+            }
+
+            // CONTINUE HERE
+            // We still need to validate that those fields only contain digits/numbers.
+            // We maybe should restrict the typing.
+            // We should split the error message when the screen is very small and
+            // the layout gets rearranged.
+
+            if ( message !== "" ) {
+                return { for: ".credit-card-row1", message: message.trim() };
+            }
+
             return {};
         });
 
