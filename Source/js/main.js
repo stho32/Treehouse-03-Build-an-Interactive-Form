@@ -172,14 +172,26 @@
            Still, when Js is disabled, why not use it? */
         $form.attr("novalidate", "novalidate");
 
-        function AppendValidationControlFor(selector) {
-            const newControlInfo = { for: selector, name: '#validationControl_' + (validationControls.length+1).toString() };
-            
-            let $control = $('<div id="' + newControlInfo.name + '" class="validationControl"></div>');
-            $control.insertAfter($(selector));
-            newControlInfo.$control = $control;
+        function RegisterValidationControlFor(selector, controlId, $control) {
+            const newControlInfo = { 
+                for: selector, 
+                name: controlId,
+                $control: $control
+            }; 
+
+            if ( $control === undefined ) {
+                newControlInfo.$control = $(controlId);
+            }
 
             validationControls.push(newControlInfo);
+        }
+
+        function AppendValidationControlFor(selector) {
+            let controlId = '#validationControl_' + (validationControls.length+1).toString();
+            let $control = $('<div id="' + controlId + '" class="validationControl"></div>');
+            $control.insertAfter($(selector));
+
+            RegisterValidationControlFor(selector, controlId, $control);
         }
 
         function ShowValidationMessage(forSelector, message) {
@@ -209,6 +221,7 @@
 
         AppendValidationControlFor("#name");
         AppendValidationControlFor("#email");
+        RegisterValidationControlFor(".activities", "#registerActivitiesValidationControl");
 
         // R8.1 Name field isn’t blank
         rules.push(() => {
@@ -221,6 +234,14 @@
             if ( !emailRegEx.test($("#email").val()) ) {
                 return { for: "#email", message: "The e-mail field does not contain a valid email address." };
             }
+            return {};
+        });
+        // R8.3 there should be an activity that is checked; at least one
+        rules.push(() => {
+            if ( $(".activities input:checked").length == 0 ) {
+                console.log("noting checked");
+                return { for: ".activities", message: "There should be at least one activity that is selected." };
+            } 
             return {};
         });
 
