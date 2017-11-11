@@ -15,3 +15,5 @@ Each point is a pomodoro of work.
   1. R6 is complete. R7 started... 
   1. R7 is working now.
   1. Started working on R8. Name field message is displayed.
+  1. Field "name" is checked now. I did a bit of css design on the validation controls and caught the form submit event to start the validation.
+  1. *

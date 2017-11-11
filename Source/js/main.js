@@ -205,13 +205,17 @@
         AppendValidationControlFor("#name");
 
         // R8.1 Name field isn’t blank
-        rules.push(function() {
-            console.log("evaluating name rule...");
+        rules.push(() => {
             if ( $("#name").val() === "" ) { return { for: "#name", message: "The name field shoudn't be blank." } }
             return {};
         });
 
-        console.log(IsFormValid());
+        // When the form is submitted, then we first want to check if all rules apply.
+        $form.on("submit", (event) => {
+            if (!IsFormValid()) {
+                event.preventDefault();
+            }
+        });
     }
 
     EnableJobRoleInteraction();

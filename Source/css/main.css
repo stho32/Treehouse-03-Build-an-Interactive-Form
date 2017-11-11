@@ -13,7 +13,7 @@
 .totalCost {
     border-top: 1px dashed #679cb3;
     font-size: 1.30em;
-    padding-top: 15px;
+    padding-top: 1.125em;
     text-align: right;
 }
 
@@ -24,4 +24,25 @@
 .totalCost__cost {
     color: green;
     font-weight: bold;
+}
+
+/* For our validation rules we want big evil error messages ! :) 
+   Hidden when its empty, but oh so present when its not.
+   We even have a little animation. 
+*/
+.validationControl {
+    background-color: red;
+    padding: 1.125em;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    color : white;
+    margin-top: -1.125em;
+    margin-bottom: 1.125em; 
+    transition: height 250ms ease-in,
+                padding 250ms ease-in;
+}
+
+.validationControl:empty {
+    height: 0px;
+    padding: 0px;
 }
