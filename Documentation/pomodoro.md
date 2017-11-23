@@ -20,3 +20,4 @@ Each point is a pomodoro of work.
   1. Working on activity checked checking. Somehow the selector doesn't work. 
   1. activity checking works, working on credit card validation
   1. basic credit card validation with multi line message works.
+  1. credit card validation pushed forward

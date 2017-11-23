@@ -172,6 +172,22 @@
            Still, when Js is disabled, why not use it? */
         $form.attr("novalidate", "novalidate");
 
+        /* OnlyDigits verifies that there are only numerical
+           characters within the text passed in. We need that 
+           for the validation of the credit card.
+        */
+        function OnlyDigits(text) {
+            var validCharacters = "1234567890";
+
+            for( let i = 0; i < text.length; i++ ) {
+                if ( validCharacters.indexOf(text[i])===-1 ) {
+                    return false;
+                }
+            } 
+
+            return true;
+        }
+
         function RegisterValidationControlFor(selector, controlId, $control) {
             const newControlInfo = { 
                 for: selector, 
@@ -262,6 +278,10 @@
                 message += "The credit card number should be between 13 and 16 numbers long.\n";
             }
 
+            if ( !OnlyDigits($("#cc-num").val()) ) {
+                message += "You have entered non-numerical characters into the credit card number.\n";
+            }
+
             if ( $("#zip").val().length !== 5 ) {
                 message += "The zip code should be 5 digits long.\n";
             }
@@ -269,6 +289,11 @@
             if ( $("#cvv").val().length !== 3 ) {
                 message += "The cvv should be 3 digits long.\n";
             }
+
+            if ( !OnlyDigits($("#cvv").val())) {
+                message += "You have entered non-numerical characters into the cvv.\n";
+            }
+            
 
             // CONTINUE HERE
             // We still need to validate that those fields only contain digits/numbers.
