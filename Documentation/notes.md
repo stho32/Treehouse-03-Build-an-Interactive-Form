@@ -40,3 +40,4 @@ jQuery I'll append data- attributes to alle checkboxes and get it from there.
   - should the placeholder "Select Theme" disappear once a Theme is selected?
   - maybe it would be more awesome if the activities would get sorted/grouped by their timeslot. For users, so they can see more clearly what exactly happens.
   - selecting activities one always gets selections on the label text. we should block that...
+  - When "Other" is selected as a job role then you should be forced to type a description into the then visible text field. 
