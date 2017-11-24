@@ -29,7 +29,7 @@
 
 ## Exceeds Expectations
 
-  11. [ ] (R11) “Color” drop down menu is hidden until a T-Shirt design is selected.
+  11. [x] (R11) “Color” drop down menu is hidden until a T-Shirt design is selected.
 
   12. [ ] (R12) Form provides at least one error message that changes depending on the error. For example, the email field displays a different error message when the email field is empty than it does when the email address is formatted incorrectly. This is accomplished without the use of HTML5's built-in field validation.
 

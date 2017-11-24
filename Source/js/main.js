@@ -53,6 +53,46 @@
         MakeColorsVisibleByDesign($designSelect.val());
     }
 
+    // implementation of requirement (R11) "Dropboxes and placeholders"
+    // For exceeding expectations we need to do some things differently.
+    function EnableTShirtDesignsAndColorsInteraction_ExceedingExpectations() {
+        const $designSelect = $("#design");
+        const $colorSelect  = $("#color");
+        const $colorSelectLabel = $("label[for='color']");
+
+        // Add a placeholder option
+        const $placeholderOption = $('<option>Please select a T-shirt theme</option>');
+        $colorSelect.prepend($placeholderOption);
+
+        function MakeColorsVisibleByDesign(design) {
+            let options = $colorSelect.children();
+
+            for (let i = 0; i < options.length; i++ ) {
+                let $option = $(options[i]);
+
+                $option.toggle($option.data("belongstoshirt") === design);
+            }
+
+            /* Toggle visibility and select the first entry when selecting
+               an option that is visible. */
+            if (design === "Select Theme") { 
+                $colorSelect.hide(); 
+                $colorSelectLabel.hide();
+            }
+            else 
+            {
+                $colorSelect.show(); 
+                $colorSelectLabel.show();
+                $colorSelect.val($colorSelect.find("option:visible")[0].value);
+            }
+        }
+
+        // Connect & initialize interaction
+        $designSelect.on("change", () => { MakeColorsVisibleByDesign($designSelect.val()); });
+        MakeColorsVisibleByDesign($designSelect.val());
+    }
+
+
     // implementation of requirement (R5) "Activities and timeslots"
     function EnableActivitySelectionAndTimeslots() {
         const $activityFieldset = $(".activities");
@@ -320,7 +360,8 @@
     }
 
     EnableJobRoleInteraction();
-    EnableTShirtDesignsAndColorsInteraction();
+    // EnableTShirtDesignsAndColorsInteraction();
+    EnableTShirtDesignsAndColorsInteraction_ExceedingExpectations();
     EnableActivitySelectionAndTimeslots();
     EnableActivityCostCalculation();
     EnablePaymentSectionDisplay();
