@@ -285,6 +285,9 @@
             if ( $("#zip").val().length !== 5 ) {
                 message += "The zip code should be 5 digits long.\n";
             }
+            if ( !OnlyDigits($("#zip").val() )) {
+                message += "The zip code should contain only numerical characters.\n";
+            }
 
             if ( $("#cvv").val().length !== 3 ) {
                 message += "The cvv should be 3 digits long.\n";
