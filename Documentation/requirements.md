@@ -16,16 +16,16 @@
 
   7. [x] (R7) When a user chooses a payment option, the chosen payment section is revealed and the other payment sections are hidden
 
-  8. [ ] (R8) Form cannot be submitted (the page does not refresh when the submit button is clicked) until the following requirements have been met:
+  8. [x] (R8) Form cannot be submitted (the page does not refresh when the submit button is clicked) until the following requirements have been met:
 
     1. [x] (R8.1) Name field isn’t blank
-    2. [*] (R8.2) Email field contains validly formatted e-mail address: (doesn’t have to check that it's a real e-mail address, just that it's formatted like one: dave@teamtreehouse.com, for example).
+    2. [x] (R8.2) Email field contains validly formatted e-mail address: (doesn’t have to check that it's a real e-mail address, just that it's formatted like one: dave@teamtreehouse.com, for example).
     3. [x] (R8.3) At least one checkbox under "Register for Activities" section must be selected.
-    4. [ ] (R8.4) If "Credit Card" is the selected payment option, the three fields accept only numbers: a 13 to 16-digit credit card number, a 5-digit zip code, and 3-number CVV value
+    4. [x] (R8.4) If "Credit Card" is the selected payment option, the three fields accept only numbers: a 13 to 16-digit credit card number, a 5-digit zip code, and 3-number CVV value
 
-  9. [ ] (R9) On submission, the form provides an error indication or message for each field that requires validation: name field, email field, “Register for Activities” checkboxes, credit card number, zip code, and CVV
+  9. [x] (R9) On submission, the form provides an error indication or message for each field that requires validation: name field, email field, “Register for Activities” checkboxes, credit card number, zip code, and CVV
 
-  10. [ ] (R10) When JavaScript is disabled, all form fields and payment information is displayed, including the "Other" field in the "Job Role" menu
+  10. [x] (R10) When JavaScript is disabled, all form fields and payment information is displayed, including the "Other" field in the "Job Role" menu
 
 ## Exceeds Expectations
 
