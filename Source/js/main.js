@@ -244,7 +244,7 @@
 
         function AppendValidationControlFor(selector) {
             let controlId = '#validationControl_' + (validationControls.length+1).toString();
-            let $control = $('<div id="' + controlId + '" class="validationControl"></div>');
+            let $control = $('<div id="' + controlId + '" class="validationControl" data-validatorFor="' + selector + '"></div>');
             $control.insertAfter($(selector));
 
             RegisterValidationControlFor(selector, controlId, $control);
@@ -277,6 +277,28 @@
             }
 
             return result;
+        }
+
+        /* Partial validation method. Does exactly the same validation 
+           but only shows the message for the selector that is specified
+           by the parameter. 
+           With this we can change all validations to live validations and
+           still keep the UI clean from validation happening before the 
+           user has entered any text into the UI.
+        */
+        function PartialValidationFor(selector) {
+            let $validator = $(".validationControl[data-validatorFor='" + selector + "']");
+            $validator = ""; 
+            
+            let result = true;
+
+            for (let i = 0; i < rules.length; i++) {
+                let evaluatedRule = rules[i]();
+
+                if (evaluatedRule.for === selector) {
+                    ShowValidationMessage(evaluatedRule.for, evaluatedRule.message);
+                }
+            }
         }
 
         AppendValidationControlFor("#name");
