@@ -292,6 +292,10 @@
         });
         // R8.2 Email-field isn't blank
         rules.push(() => {
+            if ( $("#email").val() === "" ) {
+                return { for: "#email", message: "The e-mail field is required. Please enter your email address." };
+            }
+
             const emailRegEx = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
             if ( !emailRegEx.test($("#email").val()) ) {
                 return { for: "#email", message: "The e-mail field does not contain a valid email address." };
