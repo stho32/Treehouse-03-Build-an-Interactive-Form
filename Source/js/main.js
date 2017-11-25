@@ -204,8 +204,12 @@
     // implementation of requirement (R8) "Form Validation"
     function EnableFormValidation() {
         const $form = $("form");
+        // all validation rules that shall be applied
         const rules = [];
+        // all validation controls, the controls showing the error messages
         const validationControls = [];
+        // all selectors for controls that shall be validated
+        const validatedControlSelectors = [];
 
         /* When used with javascript we modify the form to not do 
            HTML 5 validation so we can meet the requirements. 
@@ -240,6 +244,7 @@
             }
 
             validationControls.push(newControlInfo);
+            validatedControlSelectors.push(selector);
         }
 
         function AppendValidationControlFor(selector) {
@@ -276,6 +281,11 @@
                 }
             }
 
+            if ( result === false ) {
+                $("#registerButtonValidationControl").text("Sorry, there are still warnings. Please correct your data before submitting.");
+                window.setTimeout(() => { $("#registerButtonValidationControl").text(""); }, 2000);
+            }
+
             return result;
         }
 
@@ -287,8 +297,9 @@
            user has entered any text into the UI.
         */
         function PartialValidationFor(selector) {
+            console.log("executing partial validation for " + selector);
             let $validator = $(".validationControl[data-validatorFor='" + selector + "']");
-            $validator = ""; 
+            $validator.html(""); 
             
             let result = true;
 
@@ -301,11 +312,40 @@
             }
         }
 
+        /* Attach event handlers for the validation: We need an event handler that
+           fires on blur and on changes within a field and executes the partial 
+           validation rules.
+           The validator needs to be attached to every field that shall be instantly
+           validated while typing.
+         */
+        function AttachInstantValidationToDom() {
+            function AttachValidation(selector, validatedControlSelector) {
+                $(selector)
+                    .on("blur",   function(event) { PartialValidationFor(validatedControlSelector); event.stopPropagation(); })
+                    .on("change", function(event) { PartialValidationFor(validatedControlSelector); event.stopPropagation(); })
+                    .on("keyup",  function(event) { PartialValidationFor(validatedControlSelector); event.stopPropagation(); })
+                    .on("click",  function(event) { PartialValidationFor(validatedControlSelector); event.stopPropagation(); });
+            };
+
+            for (let i = 0; i < validatedControlSelectors.length; i++) {
+                if ( validatedControlSelectors[i] === ".activities" ) continue;
+                if ( validatedControlSelectors[i] === ".credit-card-row1" ) continue; // its a virtual selector
+
+                AttachValidation(validatedControlSelectors[i], validatedControlSelectors[i]);
+            }
+
+            AttachValidation("#cc-num", ".credit-card-row1");
+            AttachValidation("#zip", ".credit-card-row1");
+            AttachValidation("#cvv", ".credit-card-row1");
+        }
+
         AppendValidationControlFor("#name");
         AppendValidationControlFor("#email");
         RegisterValidationControlFor(".activities", "#registerActivitiesValidationControl");
+
         // .credit-card-row1 is virtual, just an identifier
         RegisterValidationControlFor(".credit-card-row1", "#cardnumber-zipcode-cvv-validation");
+        AppendValidationControlFor("#payment");
 
         // R8.1 Name field isn’t blank
         rules.push(() => {
@@ -359,23 +399,27 @@
                 message += "The cvv should be 3 digits long.\n";
             }
 
-            if ( !OnlyDigits($("#cvv").val())) {
+            if ( !OnlyDigits($("#cvv").val()) ) {
                 message += "You have entered non-numerical characters into the cvv.\n";
             }
             
-
-            // CONTINUE HERE
-            // We still need to validate that those fields only contain digits/numbers.
-            // We maybe should restrict the typing.
-            // We should split the error message when the screen is very small and
-            // the layout gets rearranged.
-
             if ( message !== "" ) {
                 return { for: ".credit-card-row1", message: message.trim() };
             }
 
+            // Todo: We should split the error message when the screen is very small and
+            // the layout gets rearranged. It works this way, its ok, but it would be better still.
+
             return {};
         });
+
+        rules.push(() => {
+            if ( $("#payment").val() === "select_method" ) {
+                return { for: "#payment", message: "Please select a payment method..." };
+            }
+            return {};
+        });
+
 
         // When the form is submitted, then we first want to check if all rules apply.
         $form.on("submit", (event) => {
@@ -383,6 +427,8 @@
                 event.preventDefault();
             }
         });
+        // Instant validation = on
+        AttachInstantValidationToDom();
     }
 
     EnableJobRoleInteraction();

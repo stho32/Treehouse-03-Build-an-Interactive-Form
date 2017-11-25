@@ -79,7 +79,7 @@
 
       <fieldset class="activities">
         <legend>Register for Activities</legend>
-        <div id="registerActivitiesValidationControl" class="validationControl"></div>
+        <div id="registerActivitiesValidationControl" class="validationControl" data-validatorFor=".activities"></div>
         <label><input type="checkbox" name="all" data-cost="200" data-timeslot="*">Main Conference — $200</label>
         <label><input type="checkbox" name="js-frameworks" data-cost="100" data-timeslot="Tuesday 9am-12pm"> JavaScript Frameworks Workshop — Tuesday 9am-12pm, $100</label>
         <label><input type="checkbox" name="js-libs" data-cost="100" data-timeslot="Tuesday 1pm-4pm"> JavaScript Libraries Workshop — Tuesday 1pm-4pm, $100</label>
@@ -117,7 +117,7 @@
             <input id="cvv" name="user_cvv" type="text"> 
           </div>
           
-          <div id="cardnumber-zipcode-cvv-validation" class="validationControl"></div>
+          <div id="cardnumber-zipcode-cvv-validation" class="validationControl" data-validatorFor=".credit-card-row1"></div>
           
           <label for="exp-month">Expiration Date:</label>
           <select id="exp-month" name="user_exp-month">
@@ -155,6 +155,7 @@
       </fieldset>        
         
       <button type="submit">Register</button>
+      <div id="registerButtonValidationControl" class="validationControl"></div>
       
     </form>
 
