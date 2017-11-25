@@ -22,3 +22,6 @@ Each point is a pomodoro of work.
   1. basic credit card validation with multi line message works.
   1. credit card validation pushed forward
   1. a lot of stuff is done .. started working on exceeding expectations
+  1. Working on instant validation
+  1. Working on instant validation
+  1. Testing everything in 3 Browsers FF Safari Chrome
