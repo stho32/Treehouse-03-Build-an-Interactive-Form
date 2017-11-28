@@ -67,20 +67,20 @@
         function MakeColorsVisibleByDesign(design) {
             let options = $colorSelect.children();
 
-            for (let i = 0; i < options.length; i++ ) {
-                let $option = $(options[i]);
-
-                $option.toggle($option.data("belongstoshirt") === design);
-            }
-
             /* Toggle visibility and select the first entry when selecting
                an option that is visible. */
             if (design === "Select Theme") { 
                 $colorSelect.hide(); 
                 $colorSelectLabel.hide();
             }
-            else 
-            {
+
+            for (let i = 0; i < options.length; i++ ) {
+                let $option = $(options[i]);
+
+                $option.toggle($option.data("belongstoshirt") === design);
+            }
+
+            if (design !== "Select Theme") {  
                 $colorSelect.show(); 
                 $colorSelectLabel.show();
                 $colorSelect.val($colorSelect.find("option:visible")[0].value);
