@@ -1,4 +1,4 @@
-# Build an Interactive Form
+# Treehouse-03-Build-an-Interactive-Form
 
 This is the 3rd project for the team treehouse techdegree as a javascript full stack developer.
 
@@ -6,7 +6,7 @@ See [requirements](Documentation/requirements.md) for the instructions.
 
 You might also be interested in my [notes](Documentation/notes.md) where I share my thoughts about why I chose one way of solution over another. 
 
-Click [here](https://stho32.github.io/treehouse-Build-an-Interactive-Form/Source/index.html) to review the resulting page.
+Click [here](https://stho32.github.io/Treehouse-03-Build-an-Interactive-Form/Source/index.html) to review the resulting page.
 
 In a nutshell, this project is about a form that is extended by unobtrusive javascript
 to provide client side validation and a little interaction. 
